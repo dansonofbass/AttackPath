@@ -1,0 +1,157 @@
+@import "tailwindcss";
+:root {
+  --background: #0a0f14;
+  --background-secondary: #0d141b;
+  --surface: #111922;
+  --surface-secondary: #151e27;
+  --surface-tertiary: #0e161e;
+  --border: #273441;
+  --border-strong: #344351;
+  --text-primary: #e8edf2;
+  --text-secondary: #8f9cab;
+  --text-muted: #6f7c89;
+  --blue: #4d9bd6;
+  --blue-light: #76b7e8;
+  --critical: #d96976;
+  --high: #d39a56;
+  --medium: #c8b45f;
+  --low: #4d9bd6;
+  --safe: #4daf82;
+  color-scheme: dark;
+}
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-panel: var(--surface-secondary);
+  --color-border: var(--border);
+  --color-ink: var(--text-primary);
+  --color-muted: var(--text-secondary);
+  --color-blue: var(--blue);
+  --color-safe: var(--safe);
+  --color-critical: var(--critical);
+  --color-high: var(--high);
+  --color-medium: var(--medium);
+  --font-sans: var(--font-orbitron);
+  --font-mono: var(--font-orbitron);
+  --font-serif: var(--font-orbitron);
+  --font-display: var(--font-orbitron);
+}
+*,
+*::before,
+*::after {
+  font-family: var(--font-orbitron), sans-serif;
+}
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 14px;
+}
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+input,
+select,
+textarea {
+  min-width: 0;
+}
+input[type="checkbox"] {
+  accent-color: var(--blue);
+}
+:focus-visible {
+  outline: 2px solid var(--blue-light);
+  outline-offset: 3px;
+}
+::selection {
+  background: #214968;
+}
+dialog {
+  color: var(--text-primary);
+}
+dialog::backdrop {
+  background: rgb(3 7 10 / 0.8);
+  backdrop-filter: blur(3px);
+}
+@layer components {
+  .field {
+    @apply w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm text-ink outline-none focus:border-blue focus:ring-2 focus:ring-blue/10;
+  }
+  .eyebrow {
+    @apply text-[10px] font-semibold uppercase tracking-[.18em] text-muted;
+  }
+  .technical {
+    @apply font-mono text-xs tabular-nums;
+  }
+  .table-scroll {
+    @apply w-full overflow-x-auto rounded-lg border border-border;
+  }
+  .data-table {
+    @apply w-full border-collapse text-left text-xs;
+  }
+  .data-table th {
+    @apply whitespace-nowrap border-b border-border bg-panel px-4 py-3 text-[10px] font-medium uppercase tracking-wider text-muted;
+  }
+  .data-table td {
+    @apply border-b border-border/60 px-4 py-3 align-top;
+  }
+  .data-table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+  .data-table tbody tr:hover {
+    @apply bg-panel/70;
+  }
+}
+.workflow-bg {
+  background:
+    radial-gradient(ellipse at 50% 40%, #12273955, transparent 60%),
+    var(--background);
+}
+.graph-grid {
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.enter {
+  animation: enter 0.22s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

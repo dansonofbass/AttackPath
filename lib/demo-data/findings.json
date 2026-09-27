@@ -1,0 +1,1954 @@
+[
+  {
+    "id": 97833,
+    "title": "MS17-010: Security Update for Microsoft Windows SMB Server (4013389) (ETERNALBLUE) (ETERNALCHAMPION) (ETERNALROMANCE) (ETERNALSYNERGY) (WannaCry) (EternalRocks) (Petya) (uncredentialed check)",
+    "severity": "Critical",
+    "cvss": 9.8,
+    "cves": [
+      "CVE-2017-0143",
+      "CVE-2017-0144",
+      "CVE-2017-0145",
+      "CVE-2017-0146",
+      "CVE-2017-0147",
+      "CVE-2017-0148"
+    ],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 445
+      }
+    ],
+    "synopsis": "The remote Windows host is affected by multiple vulnerabilities.",
+    "description": "The remote Windows host is affected by the following vulnerabilities : - Multiple remote code execution vulnerabilities exist in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of certain requests. An unauthenticated, remote attacker can exploit these vulnerabilities, via a specially crafted packet, to execute arbitrary code. (CVE-2017-0143, CVE-2017-0144, CVE-2017-0145, CVE-2017-0146, CVE-2017-0148) - An information disclosure vulnerability exists in Microsoft Server Message Block 1.0 (SMBv1) due to improper handling of certain requests. An unauthenticated, remote attacker can exploit this, via a specially crafted packet, to disclose sensitive information. (CVE-2017-0147) ETERNALBLUE, ETERNALCHAMPION, ETERNALROMANCE, and ETERNALSYNERGY are four of multiple Equation Group vulnerabilities and exploits disclosed on 2017/04/14 by a group known as the Shadow Brokers. WannaCry / WannaCrypt is a ransomware program utilizing the ETERNALBLUE exploit, and EternalRocks is a worm that utilizes seven Equation Group vulnerabilities. Petya is a ransomware program that first utilizes CVE-2017-0199, a vulnerability in Microsoft Office, and then spreads via ETERNALBLUE.",
+    "solution": "Microsoft has released a set of patches for Windows Vista, 2008, 7, 2008 R2, 2012, 8.1, RT 8.1, 2012 R2, 10, and 2016. Microsoft has also released emergency patches for Windows operating systems that are no longer supported, including Windows XP, 2003, and 8. For unsupported Windows operating systems, e.g. Windows XP, Microsoft recommends that users discontinue the use of SMBv1. SMBv1 lacks security features that were included in later SMB versions. SMBv1 can be disabled by following the vendor instructions provided in Microsoft KB2696547. Additionally, US-CERT recommends that users block SMB directly by blocking TCP port 445 on all network boundary devices. For SMB over the NetBIOS API, block TCP ports 137 / 139 and UDP ports 137 / 138 on all network boundary devices.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 53514,
+    "title": "MS11-030: Vulnerability in DNS Resolution Could Allow Remote Code Execution (2509553) (remote check)",
+    "severity": "Critical",
+    "cvss": 10,
+    "cves": ["CVE-2011-0657"],
+    "hosts": [
+      {
+        "ip": "192.168.15.113",
+        "protocol": "udp",
+        "port": 5355
+      }
+    ],
+    "synopsis": "Arbitrary code can be executed on the remote host through the installed Windows DNS client.",
+    "description": "A flaw in the way the installed Windows DNS client processes Link- local Multicast Name Resolution (LLMNR) queries can be exploited to execute arbitrary code in the context of the NetworkService account. Note that Windows XP and 2003 do not support LLMNR and successful exploitation on those platforms requires local access and the ability to run a special application. On Windows Vista, 2008, 7, and 2008 R2, however, the issue can be exploited remotely.",
+    "solution": "Microsoft has released a set of patches for Windows XP, 2003, Vista, 2008, 7, and 2008 R2.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 79638,
+    "title": "MS14-066: Vulnerability in Schannel Could Allow Remote Code Execution (2992611) (uncredentialed check)",
+    "severity": "Critical",
+    "cvss": 10,
+    "cves": ["CVE-2014-6321"],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The remote Windows host is affected by a remote code execution vulnerability.",
+    "description": "The remote Windows host is affected by a remote code execution vulnerability due to improper processing of packets by the Secure Channel (Schannel) security package. An attacker can exploit this issue by sending specially crafted packets to a Windows server. Note that this plugin sends a client Certificate TLS handshake message followed by a CertificateVerify message. Some Windows hosts will close the connection upon receiving a client certificate for which it did not ask for with a CertificateRequest message. In this case, the plugin cannot proceed to detect the vulnerability as the CertificateVerify message cannot be sent.",
+    "solution": "Microsoft has released a set of patches for Windows 2003, Vista, 2008, 7, 2008 R2, 8, 2012, 8.1, and 2012 R2.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 93194,
+    "title": "OpenSSH < 7.3 Multiple Vulnerabilities",
+    "severity": "High",
+    "cvss": 7.5,
+    "cves": ["CVE-2016-6210", "CVE-2016-6515"],
+    "hosts": [
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The SSH server running on the remote host is affected by multiple vulnerabilities.",
+    "description": "According to its banner, the version of OpenSSH running on the remote host is prior to 7.3. It is, therefore, affected by multiple vulnerabilities : - A flaw exists that is due to the program returning shorter response times for authentication requests with overly long passwords for invalid users than for valid users. This may allow a remote attacker to conduct a timing attack and enumerate valid usernames. (CVE-2016-6210) - A denial of service vulnerability exists in the auth_password() function in auth-passwd.c due to a failure to limit password lengths for password authentication. An unauthenticated, remote attacker can exploit this, via a long string, to consume excessive CPU resources, resulting in a denial of service condition. (CVE-2016-6515) - An unspecified flaw exists in the CBC padding oracle countermeasures that allows an unauthenticated, remote attacker to conduct a timing attack. (VulnDB 142343) - A flaw exists due to improper operation ordering of MAC verification for Encrypt-then-MAC (EtM) mode transport MAC algorithms when verifying the MAC before decrypting any ciphertext. An unauthenticated, remote attacker can exploit this, via a timing attack, to disclose sensitive information. (VulnDB 142344) Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version number.",
+    "solution": "Upgrade to OpenSSH version 7.3 or later.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 73079,
+    "title": "OpenSSH < 6.6 Multiple Vulnerabilities",
+    "severity": "High",
+    "cvss": 7.5,
+    "cves": ["CVE-2014-1692", "CVE-2014-2532"],
+    "hosts": [
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The SSH server on the remote host is affected by multiple vulnerabilities.",
+    "description": "According to its banner, the version of OpenSSH running on the remote host is prior to 6.6. It is, therefore, affected by the following vulnerabilities : - A flaw exists due to a failure to initialize certain data structures when makefile.inc is modified to enable the J-PAKE protocol. An unauthenticated, remote attacker can exploit this to corrupt memory, resulting in a denial of service condition and potentially the execution of arbitrary code. (CVE-2014-1692) - An error exists related to the 'AcceptEnv' configuration setting in sshd_config due to improper processing of wildcard characters. An unauthenticated, remote attacker can exploit this, via a specially crafted request, to bypass intended environment restrictions. (CVE-2014-2532) Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version number.",
+    "solution": "Upgrade to OpenSSH version 6.6 or later.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 84638,
+    "title": "OpenSSH < 6.9 Multiple Vulnerabilities",
+    "severity": "High",
+    "cvss": 8.5,
+    "cves": ["CVE-2015-5352"],
+    "hosts": [
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The SSH server running on the remote host is affected by multiple vulnerabilities.",
+    "description": "According to its banner, the version of OpenSSH running on the remote host is prior to 6.9. It is, therefore, affected by the following vulnerabilities : - A flaw exists within the x11_open_helper() function in the 'channels.c' file that allows connections to be permitted after 'ForwardX11Timeout' has expired. A remote attacker can exploit this to bypass timeout checks and XSECURITY restrictions. (CVE-2015-5352) - Various issues were addressed by fixing the weakness in agent locking by increasing the failure delay, storing the salted hash of the password, and using a timing-safe comparison function. - An out-of-bounds read error exists when handling incorrect pattern lengths. A remote attacker can exploit this to cause a denial of service or disclose sensitive information in the memory. - An out-of-bounds read error exists when parsing the 'EscapeChar' configuration option.",
+    "solution": "Upgrade to OpenSSH 6.9 or later.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 85382,
+    "title": "OpenSSH < 7.0 Multiple Vulnerabilities",
+    "severity": "High",
+    "cvss": 6.1,
+    "cves": [
+      "CVE-2015-5600",
+      "CVE-2015-6563",
+      "CVE-2015-6564",
+      "CVE-2015-6565"
+    ],
+    "hosts": [
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The SSH server running on the remote host is affected by multiple vulnerabilities.",
+    "description": "According to its banner, the version of OpenSSH running on the remote host is prior to 7.0. It is, therefore, affected by the following vulnerabilities : - A security bypass vulnerability exists in the kbdint_next_device() function in file auth2-chall.c that allows the circumvention of MaxAuthTries during keyboard-interactive authentication. A remote attacker can exploit this issue to force the same authentication method to be tried thousands of times in a single pass by using a crafted keyboard-interactive 'devices' string, thus allowing a brute-force attack or causing a denial of service. (CVE-2015-5600) - A security bypass vulnerability exists in sshd due to improper handling of username data in MONITOR_REQ_PAM_INIT_CTX requests. A local attacker can exploit this, by sending a MONITOR_REQ_PWNAM request, to conduct an impersonation attack. Note that this issue only affects Portable OpenSSH. (CVE-2015-6563) - A privilege escalation vulnerability exists due to a use-after-free error in sshd that is triggered when handling a MONITOR_REQ_PAM_FREE_CTX request. A local attacker can exploit this to gain elevated privileges. Note that this issue only affects Portable OpenSSH. (CVE-2015-6564) - A local command execution vulnerability exists in sshd due to setting insecure world-writable permissions for TTYs. A local attacker can exploit this, by injecting crafted terminal escape sequences, to execute commands for logged-in users. (CVE-2015-6565)",
+    "solution": "Upgrade to OpenSSH 7.0 or later.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 51192,
+    "title": "SSL Certificate Cannot Be Trusted",
+    "severity": "Medium",
+    "cvss": 6.5,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 9090
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The SSL certificate for this service cannot be trusted.",
+    "description": "The server's X.509 certificate cannot be trusted. This situation can occur in three different ways, in which the chain of trust can be broken, as stated below : - First, the top of the certificate chain sent by the server might not be descended from a known public certificate authority. This can occur either when the top of the chain is an unrecognized, self-signed certificate, or when intermediate certificates are missing that would connect the top of the certificate chain to a known public certificate authority. - Second, the certificate chain may contain a certificate that is not valid at the time of the scan. This can occur either when the scan occurs before one of the certificate's 'notBefore' dates, or after one of the certificate's 'notAfter' dates. - Third, the certificate chain may contain a signature that either didn't match the certificate's information or could not be verified. Bad signatures can be fixed by getting the certificate with the bad signature to be re-signed by its issuer. Signatures that could not be verified are the result of the certificate's issuer using a signing algorithm that Nessus either does not support or does not recognize. If the remote host is a public host in production, any break in the chain makes it more difficult for users to verify the authenticity and identity of the web server. This could make it easier to carry out man-in-the-middle attacks against the remote host.",
+    "solution": "Purchase or generate a proper certificate for this service.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 57582,
+    "title": "SSL Self-Signed Certificate",
+    "severity": "Medium",
+    "cvss": 6.4,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 9090
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The SSL certificate chain for this service ends in an unrecognized self-signed certificate.",
+    "description": "The X.509 certificate chain for this service is not signed by a recognized certificate authority. If the remote host is a public host in production, this nullifies the use of SSL as anyone could establish a man-in-the-middle attack against the remote host. Note that this plugin does not check for certificate chains that end in a certificate that is not self-signed, but is signed by an unrecognized certificate authority.",
+    "solution": "Purchase or generate a proper certificate for this service.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 99359,
+    "title": "OpenSSH < 7.5",
+    "severity": "Medium",
+    "cvss": 5.9,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The SSH server running on the remote host is affected by an information disclosure vulnerability.",
+    "description": "According to its banner, the version of OpenSSH running on the remote host is prior to 7.5. It is, therefore, affected by an information disclosure vulnerability : - An unspecified timing flaw exists in the CBC padding oracle countermeasures, within the ssh and sshd functions, that allows an unauthenticated, remote attacker to disclose potentially sensitive information. Note that the OpenSSH client disables CBC ciphers by default. However, sshd offers them as lowest-preference options, which will be removed by default in a future release. (VulnDB 144000) Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version number.",
+    "solution": "Upgrade to OpenSSH version 7.5 or later.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 35291,
+    "title": "SSL Certificate Signed Using Weak Hashing Algorithm",
+    "severity": "Medium",
+    "cvss": 4,
+    "cves": ["CVE-2004-2761"],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "An SSL certificate in the certificate chain has been signed using a weak hash algorithm.",
+    "description": "The remote service uses an SSL certificate chain that has been signed using a cryptographically weak hashing algorithm (e.g. MD2, MD4, MD5, or SHA1). These signature algorithms are known to be vulnerable to collision attacks. An attacker can exploit this to generate another certificate with the same digital signature, allowing an attacker to masquerade as the affected service. Note that this plugin reports all SSL certificate chains signed with SHA-1 that expire after January 1, 2017 as vulnerable. This is in accordance with Google's gradual sunsetting of the SHA-1 cryptographic hash algorithm. Note that certificates in the chain that are contained in the Nessus CA database (known_CA.inc) have been ignored.",
+    "solution": "Contact the Certificate Authority to have the certificate reissued.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 42873,
+    "title": "SSL Medium Strength Cipher Suites Supported",
+    "severity": "Medium",
+    "cvss": 5.3,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The remote service supports the use of medium strength SSL ciphers.",
+    "description": "The remote host supports the use of SSL ciphers that offer medium strength encryption. Nessus regards medium strength as any encryption that uses key lengths at least 64 bits and less than 112 bits, or else that uses the 3DES encryption suite. Note that it is considerably easier to circumvent medium strength encryption if the attacker is on the same physical network.",
+    "solution": "Reconfigure the affected application if possible to avoid use of medium strength ciphers.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 57608,
+    "title": "SMB Signing Disabled",
+    "severity": "Medium",
+    "cvss": 5,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 445
+      }
+    ],
+    "synopsis": "Signing is not required on the remote SMB server.",
+    "description": "Signing is not required on the remote SMB server. An unauthenticated, remote attacker can exploit this to conduct man-in-the-middle attacks against the SMB server.",
+    "solution": "Enforce message signing in the host's configuration. On Windows, this is found in the policy setting 'Microsoft network server: Digitally sign communications (always)'. On Samba, the setting is called 'server signing'. See the 'see also' links for further details.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 90023,
+    "title": "OpenSSH < 7.2p2 X11Forwarding xauth Command Injection",
+    "severity": "Medium",
+    "cvss": 4.9,
+    "cves": ["CVE-2016-3115"],
+    "hosts": [
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The SSH server running on the remote host is affected by a security bypass vulnerability.",
+    "description": "According to its banner, the version of OpenSSH running on the remote host is prior to 7.2p2. It is, therefore, affected by a security bypass vulnerability due to improper sanitization of X11 authentication credentials. An authenticated, remote attacker can exploit this, via crafted credentials, to inject arbitrary xauth commands, resulting in gaining read and write access to arbitrary files, connecting to local ports, or performing further attacks on xauth itself. Note that exploiting this vulnerability requires X11Forwarding to have been enabled.",
+    "solution": "Upgrade to OpenSSH version 7.2p2 or later.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 90510,
+    "title": "MS16-047: Security Update for SAM and LSAD Remote Protocols (3148527) (Badlock) (uncredentialed check)",
+    "severity": "Medium",
+    "cvss": 6.8,
+    "cves": ["CVE-2016-0128"],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49154
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49193
+      }
+    ],
+    "synopsis": "The remote Windows host is affected by an elevation of privilege vulnerability.",
+    "description": "The remote Windows host is affected by an elevation of privilege vulnerability in the Security Account Manager (SAM) and Local Security Authority (Domain Policy) (LSAD) protocols due to improper authentication level negotiation over Remote Procedure Call (RPC) channels. A man-in-the-middle attacker able to intercept communications between a client and a server hosting a SAM database can exploit this to force the authentication level to downgrade, allowing the attacker to impersonate an authenticated user and access the SAM database.",
+    "solution": "Microsoft has released a set of patches for Windows Vista, 2008, 7, 2008 R2, 2012, 8.1, RT 8.1, 2012 R2, and 10.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 94437,
+    "title": "SSL 64-bit Block Size Cipher Suites Supported (SWEET32)",
+    "severity": "Medium",
+    "cvss": 5.3,
+    "cves": ["CVE-2016-2183", "CVE-2016-6329"],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The remote service supports the use of 64-bit block ciphers.",
+    "description": "The remote host supports the use of a block cipher with 64-bit blocks in one or more cipher suites. It is, therefore, affected by a vulnerability, known as SWEET32, due to the use of weak 64-bit block ciphers. A man-in-the-middle attacker who has sufficient resources can exploit this vulnerability, via a 'birthday' attack, to detect a collision that leaks the XOR between the fixed secret and a known plaintext, allowing the disclosure of the secret text, such as secure HTTPS cookies, and possibly resulting in the hijacking of an authenticated session. Proof-of-concepts have shown that attackers can recover authentication cookies from an HTTPS session in as little as 30 hours. Note that the ability to send a large number of requests over the same TLS connection between the client and server is an important requirement for carrying out this attack. If the number of requests allowed for a single connection were limited, this would mitigate the vulnerability. However, Nessus has not checked for such a mitigation.",
+    "solution": "Reconfigure the affected application, if possible, to avoid use of all 64-bit block ciphers. Alternatively, place limitations on the number of requests that are allowed to be processed over the same TLS connection to mitigate this vulnerability.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 96151,
+    "title": "OpenSSH < 7.4 Multiple Vulnerabilities",
+    "severity": "Medium",
+    "cvss": 7,
+    "cves": [
+      "CVE-2016-10009",
+      "CVE-2016-10010",
+      "CVE-2016-10011",
+      "CVE-2016-10012"
+    ],
+    "hosts": [
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The SSH server running on the remote host is affected by multiple vulnerabilities.",
+    "description": "According to its banner, the version of OpenSSH running on the remote host is prior to 7.4. It is, therefore, affected by multiple vulnerabilities : - A flaw exists in ssh-agent due to loading PKCS#11 modules from paths that are outside a trusted whitelist. A local attacker can exploit this, by using a crafted request to load hostile modules via agent forwarding, to execute arbitrary code. To exploit this vulnerability, the attacker would need to control the forwarded agent-socket (on the host running the sshd server) and the ability to write to the file system of the host running ssh-agent. (CVE-2016-10009) - A flaw exists in sshd due to creating forwarded Unix-domain sockets with 'root' privileges whenever privilege separation is disabled. A local attacker can exploit this to gain elevated privileges. (CVE-2016-10010) - An information disclosure vulnerability exists in sshd within the realloc() function due leakage of key material to privilege-separated child processes when reading keys. A local attacker can possibly exploit this to disclose sensitive key material. Note that no such leak has been observed in practice for normal-sized keys, nor does a leak to the child processes directly expose key material to unprivileged users. (CVE-2016-10011) - A flaw exists in sshd within the shared memory manager used by pre-authenticating compression support due to a bounds check being elided by some optimizing compilers and due to the memory manager being incorrectly accessible when pre-authenticating compression is disabled. A local attacker can exploit this to gain elevated privileges. (CVE- 2016-10012) - A denial of service vulnerability exists in sshd when handling KEXINIT messages. An unauthenticated, remote attacker can exploit this, by sending multiple KEXINIT messages, to consume up to 128MB per connection. (VulnDB 148976) - A flaw exists in sshd due to improper validation of address ranges by the AllowUser and DenyUsers directives at configuration load time. A local attacker can exploit this, via an invalid CIDR address range, to gain access to restricted areas. (VulnDB 148977) Note that Nessus has not tested for these issues but has instead relied only on the application's self-reported version number.",
+    "solution": "Upgrade to OpenSSH version 7.4 or later.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 44081,
+    "title": "OpenSSH < 5.7 Multiple Vulnerabilities",
+    "severity": "Medium",
+    "cvss": null,
+    "cves": ["CVE-2010-4478", "CVE-2012-0814"],
+    "hosts": [
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The remote SSH service may be affected by multiple vulnerabilities.",
+    "description": "According to its banner, the version of OpenSSH running on the remote host is earlier than 5.7. Versions before 5.7 may be affected by the following vulnerabilities : - A security bypass vulnerability because OpenSSH does not properly validate the public parameters in the J-PAKE protocol. This could allow an attacker to authenticate without the shared secret. Note that this issue is only exploitable when OpenSSH is built with J-PAKE support, which is currently experimental and disabled by default, and that Nessus has not checked whether J-PAKE support is indeed enabled. (CVE-2010-4478) - The auth_parse_options function in auth-options.c in sshd provides debug messages containing authorized_keys command options, which allows remote, authenticated users to obtain potentially sensitive information by reading these messages. (CVE-2012-0814)",
+    "solution": "Upgrade to OpenSSH 5.7 or later.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 67140,
+    "title": "OpenSSH LoginGraceTime / MaxStartups DoS",
+    "severity": "Medium",
+    "cvss": null,
+    "cves": ["CVE-2010-5107"],
+    "hosts": [
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The remote SSH service is susceptible to a remote denial of service attack.",
+    "description": "According to its banner, a version of OpenSSH earlier than version 6.2 is listening on this port. The default configuration of OpenSSH installs before 6.2 could allow a remote attacker to bypass the LoginGraceTime and MaxStartups thresholds by periodically making a large number of new TCP connections and thereby prevent legitimate users from gaining access to the service. Note that this plugin has not tried to exploit the issue or detect whether the remote service uses a vulnerable configuration. Instead, it has simply checked the version of OpenSSH running on the remote host.",
+    "solution": "Upgrade to OpenSSH 6.2 and review the associated server configuration settings.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 90022,
+    "title": "OpenSSH < 7.2 Untrusted X11 Forwarding Fallback Security Bypass",
+    "severity": "Medium",
+    "cvss": 4.3,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The SSH server running on the remote host is affected by a security bypass vulnerability.",
+    "description": "According to its banner, the version of OpenSSH running on the remote host is prior to 7.2. It is, therefore, affected by a security bypass vulnerability due to a flaw in ssh(1) that is triggered when it falls back from untrusted X11 forwarding to trusted forwarding when the SECURITY extension is disabled by the X server. This can result in untrusted X11 connections that can be exploited by a remote attacker.",
+    "solution": "Upgrade to OpenSSH version 7.2 or later.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 90317,
+    "title": "SSH Weak Algorithms Supported",
+    "severity": "Medium",
+    "cvss": 4.3,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The remote SSH server is configured to allow weak encryption algorithms or no algorithm at all.",
+    "description": "Nessus has detected that the remote SSH server is configured to use the Arcfour stream cipher or no cipher at all. RFC 4253 advises against using Arcfour due to an issue with weak keys.",
+    "solution": "Contact the vendor or consult product documentation to remove the weak ciphers.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 65821,
+    "title": "SSL RC4 Cipher Suites Supported (Bar Mitzvah)",
+    "severity": "Low",
+    "cvss": 2.6,
+    "cves": ["CVE-2013-2566", "CVE-2015-2808"],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The remote service supports the use of the RC4 cipher.",
+    "description": "The remote host supports the use of RC4 in one or more cipher suites. The RC4 cipher is flawed in its generation of a pseudo-random stream of bytes so that a wide variety of small biases are introduced into the stream, decreasing its randomness. If plaintext is repeatedly encrypted (e.g., HTTP cookies), and an attacker is able to obtain many (i.e., tens of millions) ciphertexts, the attacker may be able to derive the plaintext.",
+    "solution": "Reconfigure the affected application, if possible, to avoid use of RC4 ciphers. Consider using TLS 1.2 with AES-GCM suites subject to browser and web server support.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 53841,
+    "title": "Portable OpenSSH ssh-keysign ssh-rand-helper Utility File Descriptor Leak Local Information Disclosure",
+    "severity": "Low",
+    "cvss": 2.1,
+    "cves": ["CVE-2011-4327"],
+    "hosts": [
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "Local attackers may be able to access sensitive information.",
+    "description": "According to its banner, the version of OpenSSH running on the remote host is earlier than 5.8p2. Such versions may be affected by a local information disclosure vulnerability that could allow the contents of the host's private key to be accessible by locally tracing the execution of the ssh-keysign utility. Having the host's private key may allow the impersonation of the host. Note that installations are only vulnerable if ssh-rand-helper was enabled during the build process, which is not the case for *BSD, OS X, Cygwin and Linux.",
+    "solution": "Upgrade to Portable OpenSSH 5.8p2 or later.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 70658,
+    "title": "SSH Server CBC Mode Ciphers Enabled",
+    "severity": "Low",
+    "cvss": 2.6,
+    "cves": ["CVE-2008-5161"],
+    "hosts": [
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The SSH server is configured to use Cipher Block Chaining.",
+    "description": "The SSH server is configured to support Cipher Block Chaining (CBC) encryption. This may allow an attacker to recover the plaintext message from the ciphertext. Note that this plugin only checks for the options of the SSH server and does not check for vulnerable software versions.",
+    "solution": "Contact the vendor or consult product documentation to disable CBC mode cipher encryption, and enable CTR or GCM cipher mode encryption.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 71049,
+    "title": "SSH Weak MAC Algorithms Enabled",
+    "severity": "Low",
+    "cvss": 2.6,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The remote SSH server is configured to allow MD5 and 96-bit MAC algorithms.",
+    "description": "The remote SSH server is configured to allow either MD5 or 96-bit MAC algorithms, both of which are considered weak. Note that this plugin only checks for the options of the SSH server, and it does not check for vulnerable software versions.",
+    "solution": "Contact the vendor or consult product documentation to disable MD5 and 96-bit MAC algorithms.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 86328,
+    "title": "SSH Diffie-Hellman Modulus <= 1024 Bits (Logjam)",
+    "severity": "Low",
+    "cvss": 2.6,
+    "cves": ["CVE-2015-4000"],
+    "hosts": [
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "The remote host allows SSH connections with one or more Diffie-Hellman moduli less than or equal to 1024 bits.",
+    "description": "The remote SSH server allows connections with one or more Diffie-Hellman moduli less than or equal to 1024 bits. Through cryptanalysis, a third party can find the shared secret in a short amount of time (depending on modulus size and attacker resources). This allows an attacker to recover the plaintext or potentially violate the integrity of connections.",
+    "solution": "Reconfigure the service to use a unique Diffie-Hellman moduli of 2048 bits or greater.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 11219,
+    "title": "Nessus SYN scanner",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 9090
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 135
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 139
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 554
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 2869
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 10243
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49152
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49153
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49154
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49155
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49156
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49157
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49179
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49188
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 135
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 139
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 47001
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49152
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49153
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49154
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49183
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49190
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49193
+      }
+    ],
+    "synopsis": "It is possible to determine which TCP ports are open.",
+    "description": "This plugin is a SYN 'half-open' port scanner. It shall be reasonably quick even against a firewalled target. Note that SYN scans are less intrusive than TCP (full connect) scans against broken services, but they might cause problems for less robust firewalls and also leave unclosed connections on the remote target, if the network is loaded.",
+    "solution": "Protect your target with an IP filter.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10736,
+    "title": "DCE Services Enumeration",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 135
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49152
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49153
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49154
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49155
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49156
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49157
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49179
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 49188
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 135
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49152
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49153
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49154
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49183
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49190
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 49193
+      }
+    ],
+    "synopsis": "A DCE/RPC service is running on the remote host.",
+    "description": "By sending a Lookup request to the portmapper (TCP 135 or epmapper PIPE) it was possible to enumerate the Distributed Computing Environment (DCE) services running on the remote port. Using this information it is possible to connect and bind to each service by sending an RPC request to the remote port/pipe.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 22964,
+    "title": "Service Detection",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 9090
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 10243
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 47001
+      }
+    ],
+    "synopsis": "The remote service could be identified.",
+    "description": "Nessus was able to identify the remote service by its banner or by looking at the error message it sends when it receives an HTTP request.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10114,
+    "title": "ICMP Timestamp Request Remote Date Disclosure",
+    "severity": "None",
+    "cvss": null,
+    "cves": ["CVE-1999-0524"],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "icmp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "icmp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "icmp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "icmp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "icmp",
+        "port": 0
+      }
+    ],
+    "synopsis": "It is possible to determine the exact time set on the remote host.",
+    "description": "The remote host answers to an ICMP timestamp request. This allows an attacker to know the date that is set on the targeted machine, which may assist an unauthenticated, remote attacker in defeating time-based authentication protocols. Timestamps returned from machines running Windows Vista / 7 / 2008 / 2008 R2 are deliberately incorrect, but usually within 1000 seconds of the actual system time.",
+    "solution": "Filter out the ICMP timestamp requests (13), and the outgoing ICMP timestamp replies (14).",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10287,
+    "title": "Traceroute Information",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "udp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "udp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "udp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "udp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "udp",
+        "port": 0
+      }
+    ],
+    "synopsis": "It was possible to obtain traceroute information.",
+    "description": "Makes a traceroute to the remote host.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 12053,
+    "title": "Host Fully Qualified Domain Name (FQDN) Resolution",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "It was possible to resolve the name of the remote host.",
+    "description": "Nessus was able to resolve the fully qualified domain name (FQDN) of the remote host.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 19506,
+    "title": "Nessus Scan Information",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "This plugin displays information about the Nessus scan.",
+    "description": "This plugin displays, for each tested host, information about the scan itself : - The version of the plugin set. - The type of scanner (Nessus or Nessus Home). - The version of the Nessus Engine. - The port scanner(s) used. - The port range scanned. - Whether credentialed or third-party patch management checks are possible. - The date of the scan. - The duration of the scan. - The number of hosts scanned in parallel. - The number of checks done in parallel.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 25220,
+    "title": "TCP/IP Timestamps Supported",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "The remote service implements TCP timestamps.",
+    "description": "The remote host implements TCP timestamps, as defined by RFC1323. A side effect of this feature is that the uptime of the remote host can sometimes be computed.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 35716,
+    "title": "Ethernet Card Manufacturer Detection",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "The manufacturer can be identified from the Ethernet OUI.",
+    "description": "Each ethernet MAC address starts with a 24-bit Organizationally Unique Identifier (OUI). These OUIs are registered by IEEE.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 45590,
+    "title": "Common Platform Enumeration (CPE)",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "It was possible to enumerate CPE names that matched on the remote system.",
+    "description": "By using information obtained from a Nessus scan, this plugin reports CPE (Common Platform Enumeration) matches for various hardware and software products found on a host. Note that if an official CPE is not available for the product, this plugin computes the best possible CPE based on the information available from the scan.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 84047,
+    "title": "Hyper-V Virtual Machine Detection",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "The remote host is a Hyper-V virtual machine.",
+    "description": "According to the MAC address of its network adapter, the remote host is a Microsoft Hyper-V virtual machine.",
+    "solution": "Since it is physically accessible through the network, ensure that its configuration matches your organization's security policy.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 11011,
+    "title": "Microsoft Windows SMB Service Detection",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 139
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 139
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 445
+      }
+    ],
+    "synopsis": "A file / print sharing service is listening on the remote host.",
+    "description": "The remote service understands the CIFS (Common Internet File System) or Server Message Block (SMB) protocol, used to provide shared access to files, printers, etc between nodes on a network.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10267,
+    "title": "SSH Server Type and Version Information",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "An SSH server is listening on this port.",
+    "description": "It is possible to obtain information about the remote SSH server by sending an empty authentication request.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10863,
+    "title": "SSL Certificate Information",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 9090
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "This plugin displays the SSL certificate.",
+    "description": "This plugin connects to every SSL-related port and attempts to extract and dump the X.509 certificate.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10881,
+    "title": "SSH Protocol Versions Supported",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "A SSH server is running on the remote host.",
+    "description": "This plugin determines the versions of the SSH protocol supported by the remote SSH daemon.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 11936,
+    "title": "OS Identification",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "It is possible to guess the remote operating system.",
+    "description": "Using a combination of remote probes (e.g., TCP/IP, SMB, HTTP, NTP, SNMP, etc.), it is possible to guess the name of the remote operating system in use. It is also possible sometimes to guess the version of the operating system.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 21643,
+    "title": "SSL Cipher Suites Supported",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 9090
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The remote service encrypts communications using SSL.",
+    "description": "This plugin detects which SSL ciphers are supported by the remote service for encrypting communications.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 24260,
+    "title": "HyperText Transfer Protocol (HTTP) Information",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 9090
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 10243
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 47001
+      }
+    ],
+    "synopsis": "Some information about the remote HTTP configuration can be extracted.",
+    "description": "This test gives some information about the remote HTTP protocol - the version used, whether HTTP Keep-Alive and HTTP pipelining are enabled, etc... This test is informational only and does not denote any security problem.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 54615,
+    "title": "Device Type",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "It is possible to guess the remote device type.",
+    "description": "Based on the remote operating system, it is possible to determine what the remote system type is (eg: a printer, router, general-purpose computer, etc).",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 56984,
+    "title": "SSL / TLS Versions Supported",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 9090
+      },
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The remote service encrypts communications.",
+    "description": "This plugin detects which SSL and TLS versions are supported by the remote service for encrypting communications.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 66334,
+    "title": "Patch Report",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "The remote host is missing several patches.",
+    "description": "The remote host is missing one or more security patches. This plugin lists the newest version of each patch to install to make sure the remote host is up-to-date.",
+    "solution": "Install the patches listed below.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 70657,
+    "title": "SSH Algorithms and Languages Supported",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.72",
+        "protocol": "tcp",
+        "port": 22
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 22
+      }
+    ],
+    "synopsis": "An SSH server is listening on this port.",
+    "description": "This script detects which algorithms and languages are supported by the remote service for encrypting communications.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10107,
+    "title": "HTTP Server Type and Version",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 10243
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 47001
+      }
+    ],
+    "synopsis": "A web server is running on the remote host.",
+    "description": "This plugin attempts to determine the type and the version of the remote web server.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10150,
+    "title": "Windows NetBIOS / SMB Remote Host Information Disclosure",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "udp",
+        "port": 137
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "udp",
+        "port": 137
+      }
+    ],
+    "synopsis": "It was possible to obtain the network name of the remote host.",
+    "description": "The remote host is listening on UDP port 137 or TCP port 445, and replies to NetBIOS nbtscan or SMB requests. Note that this plugin gathers information to be used in other plugins, but does not itself generate a report.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10394,
+    "title": "Microsoft Windows SMB Log In Possible",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 445
+      }
+    ],
+    "synopsis": "It was possible to log into the remote host.",
+    "description": "The remote host is running a Microsoft Windows operating system or Samba, a CIFS/SMB server for Unix. It was possible to log into it using one of the following accounts : - NULL session - Guest account - Supplied credentials",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10785,
+    "title": "Microsoft Windows SMB NativeLanManager Remote System Information Disclosure",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 445
+      }
+    ],
+    "synopsis": "It was possible to obtain information about the remote operating system.",
+    "description": "Nessus was able to obtain the remote operating system name and version (Windows and/or Samba) by sending an authentication request to port 139 or 445. Note that this plugin requires SMB1 to be enabled on the host.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 26917,
+    "title": "Microsoft Windows SMB Registry : Nessus Cannot Access the Windows Registry",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 445
+      }
+    ],
+    "synopsis": "Nessus is not able to access the remote Windows Registry.",
+    "description": "It was not possible to connect to PIPE\\winreg on the remote host. If you intend to use Nessus to perform registry-based checks, the registry checks will not work because the 'Remote Registry Access' service (winreg) has been disabled on the remote host or can not be connected to with the supplied credentials.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 27576,
+    "title": "Firewall Detection",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.85",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "The remote host is behind a firewall.",
+    "description": "Based on the responses obtained by the SYN or TCP port scanner, it was possible to determine that the remote host seems to be protected by a firewall.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 46180,
+    "title": "Additional DNS Hostnames",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 0
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "Nessus has detected potential virtual hosts.",
+    "description": "Hostnames different from the current hostname have been collected by miscellaneous plugins. Nessus has generated a list of hostnames that point to the remote host. Note that these are only the alternate hostnames for vhosts discovered on a web server. Different web servers may be hosted on name-based virtual hosts.",
+    "solution": "If you want to test them, re-scan using the special vhost syntax, such as : www.example.com[192.0.32.10]",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 51891,
+    "title": "SSL Session Resume Supported",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The remote host allows resuming SSL sessions.",
+    "description": "This script detects whether a host allows resuming SSL sessions by performing a full SSL handshake to receive a session ID, and then reconnecting with the previously used session ID. If the server accepts the session ID in the second connection, the server maintains a cache of sessions that can be resumed.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 53513,
+    "title": "Link-Local Multicast Name Resolution (LLMNR) Detection",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "udp",
+        "port": 5355
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "udp",
+        "port": 5355
+      }
+    ],
+    "synopsis": "The remote device supports LLMNR.",
+    "description": "The remote device answered to a Link-local Multicast Name Resolution (LLMNR) request. This protocol provides a name lookup service similar to NetBIOS or DNS. It is enabled by default on modern Windows versions.",
+    "solution": "Make sure that use of this software conforms to your organization's acceptable use and security policies.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 64814,
+    "title": "Terminal Services Use SSL/TLS",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The remote Terminal Services use SSL/TLS.",
+    "description": "The remote Terminal Services is configured to use SSL/TLS.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 70544,
+    "title": "SSL Cipher Block Chaining Cipher Suites Supported",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The remote service supports the use of SSL Cipher Block Chaining ciphers, which combine previous blocks with subsequent ones.",
+    "description": "The remote host supports the use of SSL ciphers that operate in Cipher Block Chaining (CBC) mode. These cipher suites offer additional security over Electronic Codebook (ECB) mode, but have the potential to leak information if used improperly.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 96982,
+    "title": "Server Message Block (SMB) Protocol Version 1 Enabled (uncredentialed check)",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 445
+      }
+    ],
+    "synopsis": "The remote Windows host supports the SMBv1 protocol.",
+    "description": "The remote Windows host supports Server Message Block Protocol version 1 (SMBv1). Microsoft recommends that users discontinue the use of SMBv1 due to the lack of security features that were included in later SMB versions. Additionally, the Shadow Brokers group reportedly has an exploit that affects SMB; however, it is unknown if the exploit affects SMBv1 or another version. In response to this, US-CERT recommends that users disable SMBv1 per SMB best practices to mitigate these potential issues.",
+    "solution": "Disable SMBv1 according to the vendor instructions in Microsoft KB2696547. Additionally, block SMB directly by blocking TCP port 445 on all network boundary devices. For SMB over the NetBIOS API, block TCP ports 137 / 139 and UDP ports 137 / 138 on all network boundary devices.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 100871,
+    "title": "Microsoft Windows SMB Versions Supported (remote check)",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 445
+      },
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 445
+      }
+    ],
+    "synopsis": "It was possible to obtain information about the version of SMB running on the remote host.",
+    "description": "Nessus was able to obtain the version of SMB running on the remote host by sending an authentication request to port 139 or 445. Note that this plugin is a remote check and does not work on agents.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10386,
+    "title": "Web Server No 404 Error Code Check",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 9090
+      }
+    ],
+    "synopsis": "The remote web server does not return 404 error codes.",
+    "description": "The remote web server is configured such that it does not return '404 Not Found' error codes when a nonexistent file is requested, perhaps returning instead a site map, search page or authentication page. Nessus has enabled some counter measures for this. However, they might be insufficient. If a great number of security holes are produced for this port, they might not all be accurate.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 10940,
+    "title": "Windows Terminal Services Enabled",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The remote Windows host has Terminal Services enabled.",
+    "description": "Terminal Services allows a Windows user to remotely obtain a graphical login (and therefore act as a local user on the remote host). If an attacker gains a valid login and password, this service could be used to gain further access on the remote host. An attacker may also use this service to mount a dictionary attack against the remote host to try to log in remotely. Note that RDP (the Remote Desktop Protocol) is vulnerable to Man-in-the-middle attacks, making it easy for attackers to steal the credentials of legitimate users by impersonating the Windows server.",
+    "solution": "Disable Terminal Services if you do not use it, and do not allow this service to run across the Internet.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 11153,
+    "title": "Service Detection (HELP Request)",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 2869
+      }
+    ],
+    "synopsis": "The remote service could be identified.",
+    "description": "It was possible to identify the remote service by its banner or by looking at the error message it sends when it receives a 'HELP' request.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 24786,
+    "title": "Nessus Windows Scan Not Performed with Admin Privileges",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.113",
+        "protocol": "tcp",
+        "port": 0
+      }
+    ],
+    "synopsis": "The Nessus scan of this host may be incomplete due to insufficient privileges provided.",
+    "description": "The Nessus scanner testing the remote host has been given SMB credentials to log into the remote host, however these credentials do not have administrative privileges. Typically, when Nessus performs a patch audit, it logs into the remote host and reads the version of the DLLs on the remote host to determine if a given patch has been applied or not. This is the method Microsoft recommends to determine if a patch has been applied. If your Nessus scanner does not have administrative privileges when doing a scan, then Nessus has to fall back to perform a patch audit through the registry which may lead to false positives (especially when using third-party patch auditing tools) or to false negatives (not all patches can be detected through the registry).",
+    "solution": "Reconfigure your scanner to use credentials with administrative privileges.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 35711,
+    "title": "Universal Plug and Play (UPnP) Protocol Detection",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "udp",
+        "port": 1900
+      }
+    ],
+    "synopsis": "The remote device supports UPnP.",
+    "description": "The remote device answered an SSDP M-SEARCH request. Therefore, it supports 'Universal Plug and Play' (UPnP). This protocol provides automatic configuration and device discovery. It is primarily intended for home networks. An attacker could potentially leverage this to discover your network architecture.",
+    "solution": "Filter access to this port if desired.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 35712,
+    "title": "Web Server UPnP Detection",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 2869
+      }
+    ],
+    "synopsis": "The remote web server provides UPnP information.",
+    "description": "Nessus was able to extract some information about the UPnP-enabled device by querying this web server. Services may also be reachable through SOAP requests.",
+    "solution": "Filter incoming traffic to this port if desired.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 57041,
+    "title": "SSL Perfect Forward Secrecy Cipher Suites Supported",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.112",
+        "protocol": "tcp",
+        "port": 3389
+      }
+    ],
+    "synopsis": "The remote service supports the use of SSL Perfect Forward Secrecy ciphers, which maintain confidentiality even if the key is stolen.",
+    "description": "The remote host supports the use of SSL ciphers that offer Perfect Forward Secrecy (PFS) encryption. These cipher suites ensure that recorded SSL traffic cannot be broken at a future date if the server's private key is compromised.",
+    "solution": "n/a",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 84502,
+    "title": "HSTS Missing From HTTPS Server",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 9090
+      }
+    ],
+    "synopsis": "The remote web server is not enforcing HSTS.",
+    "description": "The remote HTTPS server is not enforcing HTTP Strict Transport Security (HSTS). The lack of HSTS allows downgrade attacks, SSL-stripping man-in-the-middle attacks, and weakens cookie-hijacking protections.",
+    "solution": "Configure the remote web server to use HSTS.",
+    "provenance": "Legacy Nessus sample"
+  },
+  {
+    "id": 94761,
+    "title": "SSL Root Certification Authority Certificate Information",
+    "severity": "None",
+    "cvss": null,
+    "cves": [],
+    "hosts": [
+      {
+        "ip": "192.168.15.43",
+        "protocol": "tcp",
+        "port": 9090
+      }
+    ],
+    "synopsis": "A root Certification Authority certificate was found at the top of the certificate chain.",
+    "description": "The remote service uses an SSL certificate chain that contains a self-signed root Certification Authority certificate at the top of the chain.",
+    "solution": "Ensure that use of this root Certification Authority certificate complies with your organization's acceptable use and security policies.",
+    "provenance": "Legacy Nessus sample"
+  }
+]
