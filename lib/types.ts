@@ -169,3 +169,6 @@ export interface LiveEvent {
   confidence: number;
   message: string;
 }
+
+export type DemoReport = Omit<UploadedReport, "file"> & { isDemo: true };
+export type AnalysisReport = UploadedReport | DemoReport;

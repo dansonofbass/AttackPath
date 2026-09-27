@@ -7,7 +7,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { analysisStages, useReportAnalysis } from "@/hooks/use-report-analysis";
-import type { AnalysisResult, UploadedReport } from "@/lib/types";
+import type { AnalysisResult, AnalysisReport } from "@/lib/types";
 import { Button, Kpis } from "@/components/shared/ui";
 import { WorkspaceHeader } from "@/components/upload/upload-workspace";
 export function AnalysisScreen({
@@ -19,7 +19,7 @@ export function AnalysisScreen({
   user,
   onSignOut,
 }: {
-  report: UploadedReport;
+  report: AnalysisReport;
   result: AnalysisResult | null;
   onComplete: (r: AnalysisResult) => void;
   onOpen: () => void;
@@ -91,7 +91,9 @@ export function AnalysisScreen({
               Deterministic legacy sample evidence, synthetic infrastructure,
               and inferred attack relationships.
               <br />
-              The uploaded PDF was not parsed for security findings.
+              {"isDemo" in report
+                ? "Demo report using sample data. No PDF was uploaded."
+                : "The uploaded PDF was not parsed for security findings."}
             </p>
             <div className="text-center">
               <Button variant="primary" onClick={onOpen}>
@@ -132,7 +134,7 @@ export function AnalysisScreen({
           </div>
         )}
         <p className="mt-8 text-center text-[11px] text-muted">
-          Simulated analysis pipeline · Local processing only
+          Simulated analysis pipeline Â· Local processing only
         </p>
       </div>
     </main>

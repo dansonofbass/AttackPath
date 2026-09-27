@@ -1,7 +1,12 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import type { AnalysisResult, AppStage, UploadedReport } from "@/lib/types";
+import type {
+  AnalysisResult,
+  AppStage,
+  UploadedReport,
+  DemoReport,
+} from "@/lib/types";
 import { LoginScreen } from "@/components/auth/login-screen";
 import { UploadWorkspace } from "@/components/upload/upload-workspace";
 import { AnalysisScreen } from "@/components/analysis/analysis-screen";
@@ -23,6 +28,7 @@ export function AppController() {
   const [user, setUser] = useState("");
   const [report, setReport] = useState<UploadedReport | null>(null);
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
+  const [demoReport, setDemoReport] = useState<DemoReport | null>(null);
   const [ready, setReady] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -42,6 +48,7 @@ export function AppController() {
   }, []);
   const reset = () => {
     setReport(null);
+    setDemoReport(null);
     setAnalysis(null);
     setStage("upload");
   };
@@ -51,6 +58,7 @@ export function AppController() {
     } catch {}
     setUser("");
     setReport(null);
+    setDemoReport(null);
     setAnalysis(null);
     setStage("login");
   };
@@ -80,14 +88,29 @@ export function AppController() {
         onAnalyze={() => {
           if (report) setStage("analyzing");
         }}
+        onDemo={() => {
+          setReport(null);
+          setAnalysis(null);
+          setDemoReport({
+            isDemo: true,
+            filename: "Demo report (sample data)",
+            size: 0,
+            mimeType: "application/json",
+            uploadedAt: new Date().toISOString(),
+          });
+          setStage("analyzing");
+        }}
       />
     );
-  if ((stage === "analyzing" || stage === "analysis-complete") && report)
+  if (
+    (stage === "analyzing" || stage === "analysis-complete") &&
+    (report || demoReport)
+  )
     return (
       <AnalysisScreen
         user={user}
         onSignOut={signOut}
-        report={report}
+        report={(report || demoReport)!}
         result={analysis}
         onComplete={complete}
         onOpen={() => setStage("platform")}

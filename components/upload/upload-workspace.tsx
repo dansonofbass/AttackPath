@@ -8,6 +8,7 @@ import {
   ArrowRight,
   Network,
   Route,
+  Play,
 } from "lucide-react";
 import { Button, Logo } from "@/components/shared/ui";
 import { validatePdf } from "@/lib/file-validation";
@@ -36,12 +37,14 @@ export function UploadWorkspace({
   report,
   onSelect,
   onAnalyze,
+  onDemo,
   user,
   onSignOut,
 }: {
   report: UploadedReport | null;
   onSelect: (r: UploadedReport | null) => void;
   onAnalyze: () => void;
+  onDemo: () => void;
   user: string;
   onSignOut: () => void;
 }) {
@@ -74,11 +77,31 @@ export function UploadWorkspace({
             <br className="hidden sm:block" /> into attack paths.
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-muted">
-            Upload a PDF report to explore vulnerability insights,
-            affected assets, infrastructure relationships, attack paths and
-            remediation priorities.
+            Upload a PDF report to explore vulnerability insights, affected
+            assets, infrastructure relationships, attack paths and remediation
+            priorities.
           </p>
         </div>
+        <section className="mb-5 flex flex-col gap-4 rounded-xl border border-violet-400/25 bg-violet-400/5 p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="text-sm font-medium text-violet-200">
+              No PDF? Explore the demo.
+            </h2>
+            <p className="mt-2 text-xs leading-5 text-muted">
+              Watch a sample analysis and explore the report. No upload
+              required.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={onDemo}
+            className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg border border-violet-300/40 bg-violet-300 px-4 py-3 text-xs font-semibold text-[#211338] transition-colors hover:bg-violet-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-300"
+          >
+            <Play size={15} />
+            View Demo Report
+            <ArrowRight size={15} />
+          </button>
+        </section>
         <input
           ref={input}
           className="sr-only"
@@ -98,7 +121,7 @@ export function UploadWorkspace({
               <div className="min-w-0 flex-1">
                 <h2 className="break-all font-medium">{report.filename}</h2>
                 <p className="mt-2 text-xs text-muted">
-                  {formatSize(report.size)} · PDF Document
+                  {formatSize(report.size)} Â· PDF Document
                 </p>
                 <p className="mt-3 text-xs text-safe">Ready for analysis</p>
               </div>
@@ -156,7 +179,7 @@ export function UploadWorkspace({
               or <span className="text-blue">click to browse</span>
             </span>
             <span className="mt-6 text-[11px] text-muted">
-              PDF only · Maximum 25 MB
+              PDF only Â· Maximum 25 MB
             </span>
           </button>
         )}

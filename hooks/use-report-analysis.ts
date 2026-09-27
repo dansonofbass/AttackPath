@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import type { AnalysisResult, UploadedReport } from "@/lib/types";
+import type { AnalysisResult, AnalysisReport } from "@/lib/types";
 import { fileHash } from "@/lib/file-hash";
 export const analysisStages = [
   "Reading PDF report",
@@ -17,7 +17,7 @@ export const analysisStages = [
   "Preparing downloadable report",
 ];
 export function useReportAnalysis(
-  report: UploadedReport | null,
+  report: AnalysisReport | null,
   running: boolean,
   onComplete: (result: AnalysisResult) => void,
 ) {
@@ -28,7 +28,10 @@ export function useReportAnalysis(
     let cancelled = false;
     const timers: ReturnType<typeof setTimeout>[] = [];
     const points = [5, 11, 18, 27, 36, 48, 59, 68, 77, 85, 92, 97];
-    const metadata = fileHash(report.file);
+    const metadata =
+      "isDemo" in report
+        ? Promise.resolve("Not applicable ? demo dataset, no PDF uploaded")
+        : fileHash(report.file);
     points.forEach((p, i) =>
       timers.push(setTimeout(() => setProgress(p), i * 450)),
     );
