@@ -45,6 +45,7 @@ import { WhatIfPage } from "@/components/simulation/what-if-page";
 import { ReportsPage } from "@/components/reports/reports-page";
 import { newTask, useTasks } from "@/hooks/use-tasks";
 import { formatTime } from "@/lib/format";
+import { Notifications } from "@/components/shell/notifications";
 const groups = [
   {
     title: "Operations",
@@ -273,7 +274,7 @@ export function ApplicationShell({
               <span className="text-ink">{titles[page][0]}</span>
             </span>
           </div>
-          <div className="flex min-w-0 items-center gap-4">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-4">
             <div className="hidden max-w-64 text-right sm:block">
               <p
                 className="truncate text-[10px] text-muted"
@@ -286,6 +287,7 @@ export function ApplicationShell({
               </p>
             </div>
             <span className="h-6 border-l border-border" />
+            <Notifications onNavigate={navigate} />
             <div className="flex items-center gap-2">
               <span className="flex size-7 items-center justify-center rounded-full border border-border bg-panel text-muted">
                 <UserRound size={13} />
